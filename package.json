@@ -1,6 +1,6 @@
 {
   "name": "miter-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A command-line interface for the miter web framework",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
