@@ -8,7 +8,7 @@ export function cli(...args: string[]) {
             return;
         }
         else {
-            console.error(`Failed to parse command line arguments: help ${args.join(' ')}`);
+            console.error(`Failed to parse command line arguments: miter help ${args.join(' ')}`);
         }
     }
     

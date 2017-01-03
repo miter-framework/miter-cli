@@ -4,7 +4,7 @@ import { parseSubmodule } from './parse-submodule';
 export function cli(...args: string[]) {
     let submodule = parseSubmodule(args[0]);
     if (!submodule) {
-        console.error(`Failed to parse command line arguments: ${args.join(' ')}`);
+        console.error(`Failed to parse command line arguments: miter ${args.join(' ')}`);
         parseSubmodule('help')!.cli();
         return;
     }
