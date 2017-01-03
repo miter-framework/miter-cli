@@ -11,6 +11,7 @@
         "declaration": true,
         "strictNullChecks": true,
         "types": [
+            "config",
             "node"
         ]
     },
