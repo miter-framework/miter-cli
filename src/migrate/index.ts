@@ -1,12 +1,11 @@
-import { MigrationCompiler } from './compile';
+import { compileMigrations } from './compile-migrations';
+import { runMigrations } from './run-migrations';
+import { deleteFolderRecursive } from '../util/delete-folder-recursive';
 
 export async function cli(...args: string[]) {
-    await MigrationCompiler.compileMigrations(...args);
-    
-    //Steps:
-    //  - Create temp folder for configuration and migrations
-    //  - Compile typescript migrations to .js counterparts
-    //  - Run/undo the migration(s) by passing the arguments to sequelize-cli
+    let binPath = await compileMigrations();
+    await runMigrations(binPath, ...args);
+    deleteFolderRecursive(binPath);
 }
 
 export function help(...args: string[]) {
