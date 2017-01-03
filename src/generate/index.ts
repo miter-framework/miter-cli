@@ -1,7 +1,7 @@
 import path = require('path');
 import fs = require('fs');
 import { createMigrationDirectory } from '../util/create-migration-directory';
-import { getTemplate } from './get-template';
+import { getTemplate } from '../util/get-template';
 import * as moment from 'moment';
 
 function generateMigration(...args: string[]) {

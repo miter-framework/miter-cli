@@ -1,7 +1,7 @@
-import * as compile from './compile';
+import { MigrationCompiler } from './compile';
 
-export function cli(...args: string[]) {
-    compile.migrations(...args);
+export async function cli(...args: string[]) {
+    await MigrationCompiler.compileMigrations(...args);
     
     //Steps:
     //  - Create temp folder for configuration and migrations
