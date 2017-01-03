@@ -1,6 +1,7 @@
 import path = require('path');
 import fs = require('fs');
 import { createMigrationDirectory } from './create-migration-directory';
+import { getTemplate } from './get-template';
 import * as moment from 'moment';
 
 function generateMigration(...args: string[]) {
@@ -18,9 +19,8 @@ function generateMigration(...args: string[]) {
     let migrationPath = path.join(migrationsDir, migrationFileName);
     
     let outStream = fs.createWriteStream(migrationPath);
-    
-    outStream.write('This is the newly created migration!\r\n');
-    
+    let template = getTemplate('migration.ts');
+    outStream.write(template);
     outStream.close();
     
     console.log(`Successfully created migration: ${migrationFileName}`);
