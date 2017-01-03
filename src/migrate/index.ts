@@ -1,11 +1,12 @@
 import { compileMigrations } from './compile-migrations';
-import { runMigrations } from './run-migrations';
 import { deleteFolderRecursive } from '../util/delete-folder-recursive';
+import { copyConfig } from './copy-config';
+import { runMigrations } from './run-migrations';
 
 export async function cli(...args: string[]) {
     let binPath = await compileMigrations();
-    await runMigrations(binPath, ...args);
-    deleteFolderRecursive(binPath);
+    if (copyConfig(binPath)) await runMigrations(binPath, ...args);
+    // deleteFolderRecursive(binPath);
 }
 
 export function help(...args: string[]) {
