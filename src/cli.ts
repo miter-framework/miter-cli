@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 
-console.log('Launched through the command line!');
-process.exit(0);
+import * as miter from '.';
+
+let args = process.argv.slice(2);
+miter.cli(...args);
