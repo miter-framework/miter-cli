@@ -45,5 +45,6 @@ export function cli(...args: string[]) {
 }
 
 export function help(...args: string[]) {
-    console.log(`In miter help generate ${args.join(' ')}`);
+    console.log(`Usage:
+miter generate migration <migration-name>`);
 }

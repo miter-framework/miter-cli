@@ -1,15 +1,23 @@
 import { execAsync } from '../util/exec-async';
 
 export async function runMigrations(binDir: string, ...args: string[]) {
-    //Steps:
-    //  - Copy sequelize configuration into binPath
-    //  - Run/undo the migration(s) by passing the arguments to sequelize-cli
+    let cmd = 'db:migrate';
     
-    console.log('Running migrations...');
+    if (args[0] == 'undo') {
+        console.log('Reverting migrations...');
+        cmd = 'db:migrate:undo';
+        args = args.slice(1);
+    }
+    else {
+        console.log('Running migrations...');
+    }
+    
+    if (args.length > 0) {
+        console.error(`Unable to parse extra command line arguments: ${args.join(' ')}. Ignoring them...`);
+    }
     
     try {
-        let cmd = 'sequelize db:migrate';
-        let [stdout, stderr] = await execAsync(cmd, { cwd: binDir });
+        let [stdout, stderr] = await execAsync(`sequelize ${cmd}`, { cwd: binDir });
         if (stdout.trim()) console.log('stdout:', stdout);
         if (stderr.trim()) console.error('stderr:', stderr);
     }
