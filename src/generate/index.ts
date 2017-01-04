@@ -1,41 +1,10 @@
-import path = require('path');
-import fs = require('fs');
-import { createMigrationDirectory } from '../util/create-migration-directory';
-import { getTemplate } from '../util/get-template';
-import * as moment from 'moment';
-
-function generateMigration(...args: string[]) {
-    let migrationName = args[0];
-    if (!migrationName) {
-        console.error('Failed to provide new migration name.');
-        help();
-        return;
-    }
-    args = args.slice(1);
-    if (args.length) console.error(`Migration parameters are not yet supported. Ignoring them...`);
-    
-    let migrationsDir = createMigrationDirectory();
-    let migrationFileName = `${moment().utc().format('YYYYMMDDHHmmss')}-${migrationName}.ts`;
-    let migrationPath = path.join(migrationsDir, migrationFileName);
-    
-    let outStream: fs.WriteStream | null = null;
-    try {
-        outStream = fs.createWriteStream(migrationPath);
-        let template = getTemplate('migration.ts');
-        outStream.write(template);
-    }
-    finally {
-        if (outStream) outStream.close();
-    }
-    
-    console.log(`Successfully created migration: ${migrationFileName}`);
-}
+import * as migration from './generate-migration';
 
 export function cli(...args: string[]) {
     let gtype = args[0];
     switch (gtype) {
     case 'migration':
-        generateMigration(...args.slice(1));
+        migration.generate(...args.slice(1));
         break;
         
     default:
@@ -45,6 +14,13 @@ export function cli(...args: string[]) {
 }
 
 export function help(...args: string[]) {
-    console.log(`Usage:
-miter generate migration <migration-name>`);
+    let type = args[0];
+    if (type === 'migration') {
+        migration.help(...args.slice(1));
+        return;
+    }
+    
+    console.log(`Usage: miter generate <type> [args...]
+Valid types:
+  - migration`);
 }

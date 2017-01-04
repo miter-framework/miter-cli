@@ -4,9 +4,17 @@ import { copyConfig } from './copy-config';
 import { runMigrations } from './run-migrations';
 
 export async function cli(...args: string[]) {
-    let binPath = await compileMigrations();
-    if (copyConfig(binPath)) await runMigrations(binPath, ...args);
-    deleteFolderRecursive(binPath);
+    let binPath: string | null = null;
+    try {
+        binPath = await compileMigrations();
+        if (copyConfig(binPath)) await runMigrations(binPath, ...args);
+    }
+    catch (e) {
+        console.error(e);
+    }
+    finally {
+        if (binPath) deleteFolderRecursive(binPath);
+    }
 }
 
 export function help(...args: string[]) {

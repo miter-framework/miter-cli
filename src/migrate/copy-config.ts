@@ -46,9 +46,15 @@ export function copyConfig(binPath: string) {
     try {
         let configDir = path.join(binPath, 'config');
         if (!fs.exists(configDir)) fs.mkdirSync(configDir);
+        
         let configPath = path.join(configDir, 'config.json');
+        if (fs.exists(configPath)) fs.unlinkSync(configPath);
         configStream = fs.createWriteStream(configPath);
         configStream.write(JSON.stringify(sqlConfig));
+    }
+    catch (e) {
+        console.error(`Failed to copy database connection configuration!`);
+        return false;
     }
     finally {
         if (configStream) configStream.close();
