@@ -1,5 +1,6 @@
 import path = require('path');
 import fs = require('fs');
+import { Charset } from 'miter';
 import { config } from '../util/config';
 
 type DbConfig = {
@@ -8,7 +9,8 @@ type DbConfig = {
     user: string,
     password: string,
     name: string,
-    dialect?: string
+    dialect?: string,
+    charset: Charset
 };
 
 export function copyConfig(binPath: string) {
@@ -25,6 +27,9 @@ export function copyConfig(binPath: string) {
         host = host.domain;
     }
     
+    let charset = dbConfig.charset || 'utf8mb4';
+    let collate = `${charset}_general_ci`;
+    
     let sqlConfig = {};
     sqlConfig[process.env.NODE_ENV || 'development'] = {
         database: dbConfig.name,
@@ -34,11 +39,11 @@ export function copyConfig(binPath: string) {
         port: port,
         dialect: dbConfig.dialect || 'mysql',
         dialectOptions: {
-            charset: 'utf8'
+            charset: charset
         },
         define: {
-            charset: 'utf8',
-            collate: 'utf8_general_ci'
+            charset: charset,
+            collate: collate
         }
     };
     
