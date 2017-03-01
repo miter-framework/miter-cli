@@ -10,14 +10,14 @@ export async function compileMigrations(): Promise<string> {
     
     try {
         let [stdout, stderr] = await execAsync('tsc', { cwd: migrationsDir });
-        if (stdout.trim()) console.log('stdout:', stdout);
-        if (stderr.trim()) console.error('stderr:', stderr);
+        if (stdout.trim()) console.log('stdout:', stdout.trim());
+        if (stderr.trim()) console.error('stderr:', stderr.trim());
     }
     catch (e) {
         if (e.stdout || e.stderr) {
             console.error((<Error>e.err).message);
-            if (e.stdout && e.stdout.trim()) console.log('stdout:', e.stdout);
-            if (e.stderr && e.stderr.trim()) console.error('stderr:', e.stderr);
+            if (e.stdout && e.stdout.trim()) console.log('stdout:', e.stdout.trim());
+            if (e.stderr && e.stderr.trim()) console.error('stderr:', e.stderr.trim());
         }
         else console.error(e);
     }
