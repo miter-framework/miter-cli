@@ -10,6 +10,7 @@
         "moduleResolution": "node",
         "declaration": true,
         "strictNullChecks": true,
+        "skipLibCheck": true,
         "types": [
             "config",
             "node"
