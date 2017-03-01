@@ -3,5 +3,7 @@
     "editor.insertSpaces": true,
     "editor.renderWhitespace": "all",
     "editor.trimAutoWhitespace": false,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "vsicons.presets.angular": false,
+    "workbench.colorTheme": "Tomorrow Night Blue"
 }
