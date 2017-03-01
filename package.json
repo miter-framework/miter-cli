@@ -6,14 +6,21 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc",
         "watch": "tsc -w",
-        "prepublish": "tsc"
+        "prepublish": "tsc",
+        "lint": "tslint -c \"config/tslint.json\" --project \"tsconfig.json\" -e \"**/*.spec.ts\" -t stylish",
+        "pre-commit": "bash ./scripts/pre-commit.sh"
     },
+    "pre-commit": [
+        "pre-commit"
+    ],
     "main": "./dist/cli.js",
     "typings": "./dist/cli",
     "bin": {
         "miter": "./dist/cli.js"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "pre-commit": "^1.2.2"
+    },
     "dependencies": {
         "@types/config": "^0.0.31",
         "@types/node": "^6.0.55",
