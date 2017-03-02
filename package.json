@@ -1,49 +1,49 @@
 {
-    "name": "miter-cli",
-    "version": "0.0.4",
-    "description": "A command-line interface for the miter web framework",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc",
-        "watch": "tsc -w",
-        "prepublish": "tsc",
-        "lint": "tslint -c \"config/tslint.json\" --project \"tsconfig.json\" -e \"**/*.spec.ts\" -t stylish",
-        "pre-commit": "bash ./scripts/pre-commit.sh"
-    },
-    "pre-commit": [
-        "pre-commit"
-    ],
-    "main": "./dist/cli.js",
-    "typings": "./dist/cli",
-    "bin": {
-        "miter": "./dist/cli.js"
-    },
-    "devDependencies": {
-        "pre-commit": "^1.2.2"
-    },
-    "dependencies": {
-        "@types/config": "^0.0.31",
-        "@types/node": "^6.0.55",
-        "config": "^1.24.0",
-        "miter": "0.1.2",
-        "moment": "^2.17.1",
-        "sequelize-cli": "^2.5.1"
-    },
-    "keywords": [
-        "miter",
-        "cli"
-    ],
-    "contributors": [
-        "Brandon Slade <brandonyoyoslade@gmail.com>"
-    ],
-    "license": "ISC",
-    "private": false,
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/miter-framework/miter-cli.git"
-    },
-    "bugs": {
-        "url": "https://github.com/miter-framework/miter-cli/issues"
-    },
-    "homepage": "https://github.com/miter-framework/miter-cli#readme"
+  "name": "miter-cli",
+  "version": "0.1.0",
+  "description": "A command-line interface for the miter web framework",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublish": "tsc",
+    "lint": "tslint -c \"config/tslint.json\" --project \"tsconfig.json\" -e \"**/*.spec.ts\" -t stylish",
+    "pre-commit": "bash ./scripts/pre-commit.sh"
+  },
+  "pre-commit": [
+    "pre-commit"
+  ],
+  "main": "./dist/cli.js",
+  "typings": "./dist/cli",
+  "bin": {
+    "miter": "./dist/cli.js"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "@types/config": "^0.0.31",
+    "@types/node": "^6.0.55",
+    "config": "^1.24.0",
+    "miter": "0.1.2",
+    "moment": "^2.17.1",
+    "sequelize-cli": "^2.5.1"
+  },
+  "keywords": [
+    "miter",
+    "cli"
+  ],
+  "contributors": [
+    "Brandon Slade <brandonyoyoslade@gmail.com>"
+  ],
+  "license": "ISC",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/miter-framework/miter-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miter-framework/miter-cli/issues"
+  },
+  "homepage": "https://github.com/miter-framework/miter-cli#readme"
 }
