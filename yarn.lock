@@ -1376,9 +1376,9 @@ minimist@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
-miter@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/miter/-/miter-0.1.1.tgz#f93c00edd4b965fc72da38be09e12b17323c2234"
+miter@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/miter/-/miter-0.1.2.tgz#b17b80881b4bfeaf83b2f7d9793f3c3011a62201"
   dependencies:
     "@types/body-parser" "^0.0.33"
     "@types/cli-color" "^0.3.29"
@@ -1396,7 +1396,6 @@ miter@0.1.1:
     lodash "^4.16.4"
     mysql "^2.11.1"
     pluralize "^3.0.0"
-    pre-commit "^1.2.2"
     reflect-metadata "^0.1.8"
     sequelize "^3.24.6"
 
