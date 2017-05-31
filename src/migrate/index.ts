@@ -2,6 +2,7 @@ import { compileMigrations } from './compile-migrations';
 import { deleteFolderRecursive } from '../util/delete-folder-recursive';
 import { copyConfig } from './copy-config';
 import { runMigrations } from './run-migrations';
+import { config } from '../util/config';
 
 export async function cli(...args: string[]) {
     let binPath: string | null = null;
@@ -13,7 +14,9 @@ export async function cli(...args: string[]) {
         console.error(e);
     }
     finally {
-        if (binPath) deleteFolderRecursive(binPath);
+        let shouldDeleteBin = config.try<boolean>('migrations.deleteBin', true);
+        console.log(`shouldDeleteBin: ${shouldDeleteBin}`);
+        if (binPath && shouldDeleteBin) deleteFolderRecursive(binPath);
     }
 }
 

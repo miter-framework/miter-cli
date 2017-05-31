@@ -1,7 +1,8 @@
 import path = require('path');
 import fs = require('fs');
-import { Charset } from 'miter';
 import { config } from '../util/config';
+
+export type Charset = 'utf8' | 'utf8mb4';
 
 type DbConfig = {
     host: string | { domain: string, port: number },

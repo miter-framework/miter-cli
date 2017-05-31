@@ -1,6 +1,7 @@
 import path = require('path');
 import fs = require('fs');
 import { getTemplate } from './get-template';
+import { config } from './config';
 
 export function createMigrationDirectory() {
     let dir = path.join(process.cwd(), 'migrations');
@@ -8,6 +9,7 @@ export function createMigrationDirectory() {
     
     let tsconfigPath = path.join(dir, 'tsconfig.json');
     if (fs.existsSync(tsconfigPath)) {
+        if (!config.try<boolean>('migrations.recreateTsConfig', false)) return dir;
         fs.unlinkSync(tsconfigPath);
     }
     

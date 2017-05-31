@@ -8,9 +8,10 @@ export type ConfigT = {
 };
 
 export const config: ConfigT = <any>function<T>(setting: string) {
-    return configModule.get(setting);
+    return configModule.get<T>(setting);
 }
 config.get = config;
 config.try = function<T>(setting: string, defaultValue?: T) {
-    return (configModule.has(setting) && configModule.get<T>(setting)) || defaultValue;
+    if (configModule.has(setting)) return configModule.get<T>(setting);
+    return defaultValue;
 }
